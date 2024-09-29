@@ -1,0 +1,6 @@
+//cryptsus.com - we craft cyber security solutions
+CommonSecurityLog
+| where DeviceVendor == "Palo Alto Networks"
+| where DeviceEventClassID == "url"
+| where isnotempty(RequestURL)
+| summarize Amount=count() by  RequestURL, DeviceName, ApplicationProtocol, DeviceEventCategory, Activity, DeviceAction, SourceIP, DestinationIP, DestinationPort, Protocol
